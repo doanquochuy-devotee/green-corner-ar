@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AR Model - Snake Plant (Architectural Dimension Lines)</title>
+  <title>AR Model - Snake Plant (Sansevieria trifasciata)</title>
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 
   <style>
@@ -11,7 +11,7 @@
     body, html { width: 100%; height: 100%; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f8fafc; }
     model-viewer { width: 100%; height: 100%; --poster-color: transparent; }
 
-    /* Thông tin chung */
+    /* Specification Badge */
     .plant-badge {
       position: absolute; top: 16px; left: 16px;
       background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(8px);
@@ -21,87 +21,23 @@
       border: 1px solid rgba(226, 232, 240, 0.8);
     }
     .plant-badge h3 { font-size: 15px; color: #1e293b; margin-bottom: 4px; }
-    .plant-badge p { font-size: 12px; color: #475569; line-height: 1.4; }
+    .plant-badge p { font-size: 12px; color: #475569; line-height: 1.5; }
 
-    /* Đường dóng chiều cao dọc (Vertical Dimension Line) */
-    .height-guide {
-      display: flex;
-      align-items: center;
-      transform: translate(25px, -50%);
+    /* Minimalist Dimension Labels */
+    .dim-label {
+      background: rgba(15, 23, 42, 0.85);
+      color: #ffffff;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
       pointer-events: none;
       user-select: none;
-    }
-    .v-line {
-      width: 1px;
-      height: 220px;
-      background: #0f172a;
-      position: relative;
-      opacity: 0.6;
-    }
-    /* Chốt chặn 2 đầu đường dóng */
-    .v-line::before, .v-line::after {
-      content: '';
-      position: absolute;
-      width: 9px;
-      height: 1px;
-      background: #0f172a;
-      left: -4px;
-    }
-    .v-line::before { top: 0; }
-    .v-line::after { bottom: 0; }
-
-    .height-label {
-      margin-left: 8px;
-      font-size: 11px;
-      font-weight: 600;
-      color: #0f172a;
-      letter-spacing: 0.05em;
-      background: rgba(255, 255, 255, 0.85);
-      padding: 2px 6px;
-      border-radius: 4px;
-      border: 1px solid rgba(226, 232, 240, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    /* Đường dóng đường kính ngang (Horizontal Dimension Line) */
-    .width-guide {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transform: translate(-50%, 15px);
-      pointer-events: none;
-      user-select: none;
-    }
-    .h-line {
-      height: 1px;
-      width: 110px;
-      background: #0f172a;
-      position: relative;
-      opacity: 0.6;
-    }
-    .h-line::before, .h-line::after {
-      content: '';
-      position: absolute;
-      height: 9px;
-      width: 1px;
-      background: #0f172a;
-      top: -4px;
-    }
-    .h-line::before { left: 0; }
-    .h-line::after { right: 0; }
-
-    .width-label {
-      margin-top: 6px;
-      font-size: 11px;
-      font-weight: 600;
-      color: #0f172a;
-      letter-spacing: 0.05em;
-      background: rgba(255, 255, 255, 0.85);
-      padding: 2px 6px;
-      border-radius: 4px;
-      border: 1px solid rgba(226, 232, 240, 0.6);
-    }
-
-    /* Thanh chọn màu chậu tối giản */
+    /* Pot Color Customizer */
     .customizer-bar {
       position: absolute; bottom: 84px; left: 50%;
       transform: translateX(-50%);
@@ -119,14 +55,15 @@
     }
     .color-dot:hover { transform: scale(1.15); }
 
-    /* Nút AR */
+    /* AR Button */
     .ar-button {
       background-color: #2D5A3E; color: white; border-radius: 30px;
       border: none; position: absolute; bottom: 24px; left: 50%;
       transform: translateX(-50%); padding: 12px 24px;
-      font-size: 14px; font-weight: 600;
+      font-size: 13px; font-weight: 600;
       box-shadow: 0 4px 12px rgba(45, 90, 62, 0.35); cursor: pointer;
     }
+    .ar-button:active { transform: translateX(-50%) scale(0.98); }
   </style>
 </head>
 <body>
@@ -136,7 +73,7 @@
     <p>
       • <strong>Placement:</strong> Podium Cluster / Corner Zone<br>
       • <strong>Material:</strong> Matte composite pot, natural pebble surface<br>
-      • <strong>Air Purification:</strong> Nocturnal O₂ (CAM), Formaldehyde filter
+      • <strong>Purification:</strong> Nocturnal O₂ (CAM), Formaldehyde filter
     </p>
   </div>
 
@@ -150,23 +87,20 @@
     shadow-intensity="1" shadow-softness="0.8"
     environment-image="neutral" exposure="1.0">
 
-    <!-- Thước dóng chiều cao bên hông -->
-    <div slot="hotspot-dim-v" data-position="0.22 0.35 0" data-normal="1 0 0" class="height-guide">
-      <div class="v-line"></div>
-      <div class="height-label">70 cm</div>
+    <!-- Height & Pot Diameter Dimensions -->
+    <div slot="hotspot-height" data-position="0 0.7 0" data-normal="0 1 0" class="dim-label">
+      Height: 70 cm
     </div>
 
-    <!-- Thước dóng đường kính đáy chậu -->
-    <div slot="hotspot-dim-h" data-position="0 0.02 0.16" data-normal="0 0 1" class="width-guide">
-      <div class="h-line"></div>
-      <div class="width-label">⌀ 30 cm</div>
+    <div slot="hotspot-diameter" data-position="0.18 0.12 0" data-normal="1 0 0" class="dim-label">
+      Base: ⌀ 30 cm
     </div>
 
-    <button slot="ar-button" class="ar-button">📱 View in Classroom (AR)</button>
+    <button slot="ar-button" class="ar-button">View in Room (AR)</button>
   </model-viewer>
 
   <div class="customizer-bar">
-    <span>Pot Tone:</span>
+    <span>Pot Color:</span>
     <div class="color-dot" style="background-color: #F4F6F0;" title="Warm Cream" onclick="changePotColor('#F4F6F0')"></div>
     <div class="color-dot" style="background-color: #CBD5E1;" title="Concrete Grey" onclick="changePotColor('#CBD5E1')"></div>
     <div class="color-dot" style="background-color: #C86D51;" title="Terracotta" onclick="changePotColor('#C86D51')"></div>
